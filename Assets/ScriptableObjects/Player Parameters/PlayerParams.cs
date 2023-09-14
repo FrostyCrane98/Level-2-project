@@ -26,6 +26,6 @@ public class PlayerParams : ScriptableObject
     [Range(1, 90)]
     public int WallJumpAngle= 35;
 
-    [Range(100, 10000)]
+    [Range(1, 100)]
     public int WallJumpForce = 1;
 }

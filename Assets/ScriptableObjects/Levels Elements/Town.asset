@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f37b58804347aa419a37d9caeeef355, type: 3}
-  m_Name: PlayerParams
+  m_Script: {fileID: 11500000, guid: 49bc2ec5d02debc4f891858ecb4a91d1, type: 3}
+  m_Name: Town
   m_EditorClassIdentifier: 
-  BaseSpeed: 1
-  MaxSpeed: 10
-  JumpForce: 381
-  DoubleJumpForce: 55
-  WallSlideSpeed: 1
-  WallJumpAngle: 45
-  WallJumpForce: 750
+  Elements: []
+  Obstacles: []

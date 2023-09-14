@@ -100,20 +100,21 @@ public class InputController : MonoBehaviour
     #region Jump
     private void OnJumpStarted(InputAction.CallbackContext context)
     {
+        //first jump
         if (!_hasDoubleJumped && _isGrounded)
         {
-            _rigidBody.AddForce(Vector2.up * PlayerParams.JumpForce);
+            _rigidBody.AddForce(Vector2.up * PlayerParams.JumpForce, ForceMode2D.Impulse);
             _isGrounded = false;
         }
-
-        if (!_hasDoubleJumped && !_isGrounded && !_canWallJump)
+        //double jump
+        else if (!_hasDoubleJumped && !_isGrounded && !_canWallJump)
         {
             _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, 0);
-            _rigidBody.AddForce(Vector2.up * PlayerParams.DoubleJumpForce);
+            _rigidBody.AddForce(Vector2.up * PlayerParams.DoubleJumpForce, ForceMode2D.Impulse);
             _hasDoubleJumped = true;
         }
-
-        if (_canWallJump && !_isGrounded)
+        //walljump
+        else if (_canWallJump && !_isGrounded)
         {
             WallJump();
         }
@@ -123,7 +124,7 @@ public class InputController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(_rigidBody.position + Vector2.down * (_collider.size.y / 2 + 0.01f), Vector2.down);
 
-        if (hit.distance <= 0.01)
+        if (hit.distance <= 0.01 && _rigidBody.velocity.y <= 0)
         {
             _hasDoubleJumped = false;
             _isGrounded = true;
@@ -167,13 +168,13 @@ public class InputController : MonoBehaviour
         if (_wallDirection.x < 0)
         {
             Vector2 _wallJumpDirection = (Quaternion.AngleAxis(PlayerParams.WallJumpAngle, Vector3.forward) * -_wallDirection);
-            _rigidBody.AddForce(_wallJumpDirection * PlayerParams.WallJumpForce);
+            _rigidBody.AddForce(_wallJumpDirection * PlayerParams.WallJumpForce, ForceMode2D.Impulse);
             _rigidBody.velocity = new Vector2(Mathf.Clamp(_rigidBody.velocity.x, -PlayerParams.WallJumpForce, PlayerParams.WallJumpForce), _rigidBody.velocity.y);
         }
         else
         {
             Vector2 _wallJumpDirection = (Quaternion.AngleAxis(-PlayerParams.WallJumpAngle, Vector3.forward) * -_wallDirection);
-            _rigidBody.AddForce(_wallJumpDirection * PlayerParams.WallJumpForce);
+            _rigidBody.AddForce(_wallJumpDirection * PlayerParams.WallJumpForce, ForceMode2D.Impulse);
             _rigidBody.velocity = new Vector2(Mathf.Clamp(_rigidBody.velocity.x, -PlayerParams.WallJumpForce, PlayerParams.WallJumpForce), _rigidBody.velocity.y);
         }
     }
