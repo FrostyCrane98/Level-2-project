@@ -16,4 +16,7 @@ public class PCGElements : ScriptableObject
 
     [Header("Obstacles generation parameters")]
     public List<Obstacle> Obstacles = new List<Obstacle>();
+    public int NoObstaclesProbability;
+    [Header("Wall parameters")]
+    public int MinWallHeight, MaxWallHeight;
 }

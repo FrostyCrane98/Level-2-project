@@ -26,4 +26,9 @@ MonoBehaviour:
   MaxPlatformY: 5
   Obstacles:
   - Prefab: {fileID: 3695886924654729170, guid: ddc21e6992286ec439b70c09aee30fc1, type: 3}
+    Probability: 8
+  - Prefab: {fileID: 1176905378825583992, guid: 888e982f18ba19a478f4094bbe341ea4, type: 3}
     Probability: 10
+  NoObstaclesProbability: 185
+  MinWallHeight: 3
+  MaxWallHeight: 12
