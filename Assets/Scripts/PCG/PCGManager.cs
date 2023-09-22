@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
-using static Unity.Collections.Unicode;
+using Fabio.Level2project.ScriptableObjects;
+using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 public class PCGManager : MonoBehaviour
 {
@@ -54,11 +54,7 @@ public class PCGManager : MonoBehaviour
                     newCollider.offset = new Vector2(-0.5f, newCollider.offset.y);
                 }               
             }       
-            //if (i % 2 == 0)
-            //{
-            //    GameObject newScoreObj = GameObject.Instantiate(ScoreObject, tilePos + Vector2.up, Quaternion.identity);
-            //    newScoreObj.transform.SetParent(newTile.transform);
-            //}
+
         }
         int gap = Random.Range(LevelElements.MinPlatformGap, LevelElements.MaxPlatformGap);
         _nextPosition.x += length + gap;
@@ -84,17 +80,19 @@ public class PCGManager : MonoBehaviour
             {
                 GameObject newObstacle = GameObject.Instantiate(LevelElements.Obstacles[obstacleIndex].Prefab, _tiles[i].transform.position, Quaternion.identity);
                 _obstacles.Add(newObstacle);
-                switch (obstacleIndex)
+                Obstacle currentObstacle = LevelElements.Obstacles[obstacleIndex];
+                
+                if (currentObstacle is Trap)
                 {
-                    case 0:
-                        
-                        break;    
-                    case 1:
-                        Transform wallTransform = newObstacle.transform.GetChild(0);
-                        wallTransform.localScale = new Vector3(wallTransform.localScale.x, Random.Range(LevelElements.MinWallHeight,LevelElements.MaxWallHeight),wallTransform.localScale.z);
-                        wallTransform.position = new Vector3(wallTransform.position.x, _tiles[i].transform.position.y + wallTransform.localScale.y / 2 + 0.5f, wallTransform.position.z);
-                        break;
-                }                               
+
+                }
+                else if (currentObstacle is Wall)
+                {
+                    Wall wall = (Wall)currentObstacle;
+                    Transform wallTransform = newObstacle.transform.GetChild(0);
+                    wallTransform.localScale = new Vector3(wallTransform.localScale.x, Random.Range(wall.MinWallHeight, wall.MaxWallHeight),wallTransform.localScale.z);
+                    wallTransform.position = new Vector3(wallTransform.position.x, _tiles[i].transform.position.y + wallTransform.localScale.y / 2 + 0.5f, wallTransform.position.z);
+                }                              
             }
         }
        

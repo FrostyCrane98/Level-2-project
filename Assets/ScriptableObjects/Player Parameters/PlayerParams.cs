@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="PlayerParams", menuName = "Create Player Params")]
+[CreateAssetMenu(fileName ="PlayerParams", menuName = "ScriptableObjects/PlayerParameters/Create Player Params")]
 public class PlayerParams : ScriptableObject
 {
     [Header("The base movement speed of the player")]

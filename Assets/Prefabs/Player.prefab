@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2412345830734367335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69,7 +69,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 103818750852470937}
   - component: {fileID: 4000211964702768590}
   - component: {fileID: 6639378955818870218}
+  - component: {fileID: 2439203294879476508}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -282,7 +283,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -394,3 +395,33 @@ MonoBehaviour:
       m_Action: Dash
       m_Flags: 0
     m_Flags: 0
+  TogglePause:
+    m_Name: Toggle Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 328fae70-9df0-497b-9f5a-a53bf10cbe26
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: aa52315d-563c-4a9b-8ea4-8a0f019e027e
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Toggle Pause
+      m_Flags: 0
+    m_Flags: 0
+--- !u!114 &2439203294879476508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7619922283836336667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2969e1307caae4baafbd6f7a6597ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthParams: {fileID: 11400000, guid: 34afbb63991dc964fba7336347c5b4e1, type: 2}

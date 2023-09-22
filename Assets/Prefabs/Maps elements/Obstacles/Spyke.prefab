@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 2726112527022235592}
   - component: {fileID: -6589787815400833741}
   - component: {fileID: 454066078060076161}
+  - component: {fileID: -5298143223339688322}
   m_Layer: 6
   m_Name: Spyke
   m_TagString: Untagged
@@ -276,6 +277,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5298143223339688322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695886924654729170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1087b5c33c5cf854aba5aadf429839a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrapParams: {fileID: 11400000, guid: 6748cda6d2bcb854e9b95ef1e58293ea, type: 2}
 --- !u!1 &3763744581823336666
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Biome 1
   m_EditorClassIdentifier: 
   TileTypes:
-  - Prefab: {fileID: 7245650222503378342, guid: c73b6f50c9e5117439975d9f79bada80, type: 3}
-    Probability: 30
+  - {fileID: 11400000, guid: c6520cbd092cea94f8a41304b141507a, type: 2}
   InitialTiles: 20
   StartPosition: {x: 0, y: 0}
   LevelLenght: 20
@@ -25,10 +24,6 @@ MonoBehaviour:
   MinPlatformY: -1
   MaxPlatformY: 5
   Obstacles:
-  - Prefab: {fileID: 3695886924654729170, guid: ddc21e6992286ec439b70c09aee30fc1, type: 3}
-    Probability: 8
-  - Prefab: {fileID: 1176905378825583992, guid: 888e982f18ba19a478f4094bbe341ea4, type: 3}
-    Probability: 10
-  NoObstaclesProbability: 185
-  MinWallHeight: 3
-  MaxWallHeight: 12
+  - {fileID: 11400000, guid: 6748cda6d2bcb854e9b95ef1e58293ea, type: 2}
+  - {fileID: 11400000, guid: c73edade5cc60624d85e1a15f83e6ddc, type: 2}
+  NoObstaclesProbability: 182
