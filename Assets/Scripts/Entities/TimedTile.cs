@@ -16,26 +16,26 @@ namespace Fabio.Level2project.Entities
             _renderer = GetComponent<SpriteRenderer>();
         }
 
-        private void Update()
-        {
-            //use raycast instead of collider
-        }
         private void OnCollisionStay2D(Collision2D collision)
         {
-            switch (_timeRemaining)
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                case (<= 0):
-                    Destroy(gameObject);
-                    return;
-                case (<= 1):
-                    _renderer.color = Color.red;
-                    return;
-                case (<= 2):
-                    _renderer.color = Color.yellow;
-                    return;
-                case (> 2):
-                    _renderer.color = Color.green;
-                    return;
+                switch (_timeRemaining)
+                {
+                    case (<= 0f):
+                        Destroy(gameObject);
+                        break;
+                    case (<= 1f):
+                        _renderer.color = new Color(1, 0.30f, 0);
+                        break;
+                    case (<= 2f):
+                        _renderer.color = Color.yellow;
+                        break;
+                    case (> 2f):
+                        _renderer.color = Color.green;
+                        break;
+                }
+                _timeRemaining -= Time.fixedDeltaTime;
             }
         }
     }

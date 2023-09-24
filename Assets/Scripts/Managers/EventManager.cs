@@ -1,3 +1,4 @@
+using Fabio.Level2project.ScriptableObjects;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +35,8 @@ namespace Fabio.Level2project.Managers
         public event Action OnTitleScreen;
         public event Action OnResume;
         public event Action OnGameOver;
+        public event Action<PCGElements> OnLevelGeneration;
+        public event Action OnGameCompleted;
 
 
         #region GameLoop Events
@@ -57,8 +60,18 @@ namespace Fabio.Level2project.Managers
             OnGameOver?.Invoke();
         }
 
+        public void GameCompleted()
+        {
+            OnGameCompleted?.Invoke();
+        }
+
+
         #endregion
 
+        public void LevelGeneration(PCGElements levelToGenerate)
+        {
+            OnLevelGeneration?.Invoke(levelToGenerate);
+        }
         public void PauseToggled()
         {
             OnPauseToggled?.Invoke();

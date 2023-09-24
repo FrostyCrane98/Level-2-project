@@ -26,4 +26,4 @@ MonoBehaviour:
   Obstacles:
   - {fileID: 11400000, guid: 6748cda6d2bcb854e9b95ef1e58293ea, type: 2}
   - {fileID: 11400000, guid: c73edade5cc60624d85e1a15f83e6ddc, type: 2}
-  NoObstaclesProbability: 182
+  NoObstaclesProbability: 10

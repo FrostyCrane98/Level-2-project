@@ -4,21 +4,27 @@ using UnityEngine;
 using Fabio.Level2project.ScriptableObjects;
 using Unity.VisualScripting;
 using Random = UnityEngine.Random;
+using Fabio.Level2project.Managers;
 
 public class PCGManager : MonoBehaviour
 {
     public PCGElements LevelElements;
+    public GameObject EndLevelPrefab;
 
 
     private Vector3 _nextPosition;
-    private List<int> _probabilities = new List<int>();
     private List<GameObject> _tiles = new List<GameObject>();
     private List<GameObject> _obstacles = new List<GameObject>();
 
-    private void Start()
+
+    private void OnEnable()
     {
-        SpawnFirstPlatform();
-        GenerateLevel();
+        EventManager.Instance.OnLevelGeneration += GenerateLevel;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.OnLevelGeneration -= GenerateLevel;
     }
 
     public void SpawnFirstPlatform()
@@ -46,15 +52,22 @@ public class PCGManager : MonoBehaviour
             GameObject newTile = GameObject.Instantiate(LevelElements.TileTypes[tileIndex].Prefab, tilePos, Quaternion.identity);            
             _tiles.Add(newTile);
             if (i == length / 2)
-            {                
-                BoxCollider2D newCollider = newTile.AddComponent<BoxCollider2D>();
-                newCollider.size = new Vector2(length, newCollider.size.y);
-                if (length % 2 == 0)
+            {
+                TileType currentTile = LevelElements.TileTypes[tileIndex];
+                if (currentTile is TimedTile)
                 {
-                    newCollider.offset = new Vector2(-0.5f, newCollider.offset.y);
-                }               
+                    continue;
+                }
+                else
+                {
+                    BoxCollider2D newCollider = newTile.AddComponent<BoxCollider2D>();
+                    newCollider.size = new Vector2(length, newCollider.size.y);
+                    if (length % 2 == 0)
+                    {
+                        newCollider.offset = new Vector2(-0.5f, newCollider.offset.y);
+                    }               
+                }
             }       
-
         }
         int gap = Random.Range(LevelElements.MinPlatformGap, LevelElements.MaxPlatformGap);
         _nextPosition.x += length + gap;
@@ -84,7 +97,7 @@ public class PCGManager : MonoBehaviour
                 
                 if (currentObstacle is Trap)
                 {
-
+                    continue;
                 }
                 else if (currentObstacle is Wall)
                 {
@@ -94,8 +107,13 @@ public class PCGManager : MonoBehaviour
                     wallTransform.position = new Vector3(wallTransform.position.x, _tiles[i].transform.position.y + wallTransform.localScale.y / 2 + 0.5f, wallTransform.position.z);
                 }                              
             }
-        }
-       
+        }     
+    }
+
+    private void SpawnEnd()
+    {
+        GameObject levelEnd = Instantiate(EndLevelPrefab, _nextPosition, Quaternion.identity);
+        _tiles.Add(levelEnd);
     }
 
     public void ResetLevel()
@@ -114,7 +132,7 @@ public class PCGManager : MonoBehaviour
         _nextPosition = Vector2.zero;
     }
 
-    int RollingProbabilities(List<int> probabilities)
+    private int RollingProbabilities(List<int> probabilities)
     {
         int index = -1;
         int totalProbabilities = 0;
@@ -135,14 +153,27 @@ public class PCGManager : MonoBehaviour
         return index;
     }
 
-    void GenerateLevel()
+    private void GenerateLevel(PCGElements levelToGenerate)
     {
+        LevelElements = levelToGenerate;
+
+        if (_tiles.Count > 0)
+        {
+            ResetLevel();
+        }
+
+        SpawnFirstPlatform();
+
         for (int i = 0; i < LevelElements.LevelLenght; i++)
         {
             SpawnPlatform(_nextPosition, Random.Range(LevelElements.MinPlatformSize, LevelElements.MaxPlatformSize));
         }
-            SpawnObstacles();
+
+        SpawnObstacles();
+        SpawnEnd();
     }
+
+    
 }
 
 

@@ -28,14 +28,14 @@ namespace Fabio.Level2project.Managers
         private void OnEnable()
         {
             EventManager.Instance.OnPlayerDeath += OnPlayerDeath;
-            EventManager.Instance.OnStageClear += OnStageClear;
+            EventManager.Instance.OnGameCompleted += OnGameWin;
             EventManager.Instance.OnPauseToggled += TogglePause;
         }
 
         private void OnDisable()
         {
             EventManager.Instance.OnPlayerDeath -= OnPlayerDeath;
-            EventManager.Instance.OnStageClear -= OnStageClear;
+            EventManager.Instance.OnGameCompleted -= OnGameWin;
             EventManager.Instance.OnPauseToggled -= TogglePause;
         }
 
@@ -128,7 +128,7 @@ namespace Fabio.Level2project.Managers
             State = eGameState.GameOver;
         }
 
-        private void OnStageClear()
+        private void OnGameWin()
         {
             State = eGameState.Win;
         }

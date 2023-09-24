@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TileTypes:
   - {fileID: 11400000, guid: 1d8a4ffe0f48d194bb42a187b7291cd2, type: 2}
-  InitialTiles: 0
+  - {fileID: 11400000, guid: 8caadb7a9e184e0479022cc46131fb41, type: 2}
+  - {fileID: 11400000, guid: 47ef1e071ef85cd4f8194b3846177a74, type: 2}
+  InitialTiles: 5
   StartPosition: {x: 0, y: 0}
-  LevelLenght: 0
-  MinPlatformSize: 0
-  MaxPlatformSize: 0
-  MinPlatformGap: 0
-  MaxPlatformGap: 0
-  MinPlatformY: 0
-  MaxPlatformY: 0
-  Obstacles: []
-  NoObstaclesProbability: 0
+  LevelLenght: 30
+  MinPlatformSize: 2
+  MaxPlatformSize: 5
+  MinPlatformGap: 3
+  MaxPlatformGap: 8
+  MinPlatformY: -1
+  MaxPlatformY: 5
+  Obstacles:
+  - {fileID: 11400000, guid: c73edade5cc60624d85e1a15f83e6ddc, type: 2}
+  - {fileID: 11400000, guid: 6748cda6d2bcb854e9b95ef1e58293ea, type: 2}
+  NoObstaclesProbability: 182

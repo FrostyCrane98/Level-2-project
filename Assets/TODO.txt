@@ -1,1 +1,4 @@
-- Fix the begin of the level, the player should not be able to walljump on the initial wall
+- Fix health counter
+- Jumping Enemy
+- Fire bar
+- Falling obstacle

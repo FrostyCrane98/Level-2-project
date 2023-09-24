@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DefaultWall
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1176905378825583992, guid: 888e982f18ba19a478f4094bbe341ea4, type: 3}
-  Probability: 10
+  Probability: 8
   MinWallHeight: 3
   MaxWallHeight: 12

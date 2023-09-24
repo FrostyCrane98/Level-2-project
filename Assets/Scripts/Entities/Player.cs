@@ -15,14 +15,20 @@ namespace Fabio.Level2project.Entities
         private Vector2 _initialPosition;
 
 
-
         private void OnEnable()
         {
             _initialPosition = transform.position;
             _currentHealth = HealthParams.InitialHealth;
             EventManager.Instance.OnStart += ResetPlayer;
             EventManager.Instance.OnPlayerHit += PlayerHit;
+            EventManager.Instance.OnStageClear += RespawnPlayer;
+        }
 
+        private void OnDisable()
+        {
+            EventManager.Instance.OnStart -= ResetPlayer;
+            EventManager.Instance.OnPlayerHit -= PlayerHit;
+            EventManager.Instance.OnStageClear += RespawnPlayer;
         }
 
         private void FixedUpdate()
@@ -33,17 +39,11 @@ namespace Fabio.Level2project.Entities
             }
         }
 
-        private void OnDisable()
-        {
-            EventManager.Instance.OnStart -= ResetPlayer;
-            EventManager.Instance.OnPlayerHit -= PlayerHit;
-        }
-
-
         private void PlayerHit()
         {
             _currentHealth--;
-            transform.position = _initialPosition;
+            RespawnPlayer();
+
             if (_currentHealth <= 0) 
             {
                 EventManager.Instance.PlayerDeath();
@@ -53,6 +53,11 @@ namespace Fabio.Level2project.Entities
         private void ResetPlayer()
         {
             _currentHealth = HealthParams.InitialHealth;
+            transform.position = _initialPosition;
+        }
+
+        private void RespawnPlayer()
+        {
             transform.position = _initialPosition;
         }
     }

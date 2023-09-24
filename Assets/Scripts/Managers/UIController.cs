@@ -23,6 +23,7 @@ namespace Fabio.Level2project.Managers
             EventManager.Instance.OnResume += DisablePanels;
             EventManager.Instance.OnPlayerHit += OnPlayerHit;
             EventManager.Instance.OnGameOver += EnableGameOverPanel;
+            EventManager.Instance.OnGameCompleted += EnableWinPanel;
         }
 
         private void OnDisable()
@@ -32,6 +33,8 @@ namespace Fabio.Level2project.Managers
             EventManager.Instance.OnPauseToggled -= SetPause;
             EventManager.Instance.OnResume -= DisablePanels;
             EventManager.Instance.OnPlayerHit -= OnPlayerHit;
+            EventManager.Instance.OnGameOver -= EnableGameOverPanel;
+            EventManager.Instance.OnGameCompleted -= EnableWinPanel;
         }
 
         #region Menus Management
