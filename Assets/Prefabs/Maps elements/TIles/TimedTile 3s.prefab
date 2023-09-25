@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5271374941464556701}
   - component: {fileID: -7814269847014214241}
   - component: {fileID: -77549738745594551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TimedTile 3s
   m_TagString: Untagged
   m_Icon: {fileID: 0}

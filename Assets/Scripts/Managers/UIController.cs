@@ -21,9 +21,9 @@ namespace Fabio.Level2project.Managers
             EventManager.Instance.OnTitleScreen += SetTitleScreen;
             EventManager.Instance.OnPauseToggled += SetPause;
             EventManager.Instance.OnResume += DisablePanels;
-            EventManager.Instance.OnPlayerHit += OnPlayerHit;
             EventManager.Instance.OnGameOver += EnableGameOverPanel;
             EventManager.Instance.OnGameCompleted += EnableWinPanel;
+            EventManager.Instance.OnHealthChanged += UpdateLives;
         }
 
         private void OnDisable()
@@ -32,9 +32,9 @@ namespace Fabio.Level2project.Managers
             EventManager.Instance.OnTitleScreen -= SetTitleScreen;
             EventManager.Instance.OnPauseToggled -= SetPause;
             EventManager.Instance.OnResume -= DisablePanels;
-            EventManager.Instance.OnPlayerHit -= OnPlayerHit;
             EventManager.Instance.OnGameOver -= EnableGameOverPanel;
             EventManager.Instance.OnGameCompleted -= EnableWinPanel;
+            EventManager.Instance.OnHealthChanged -= UpdateLives;
         }
 
         #region Menus Management
@@ -76,7 +76,6 @@ namespace Fabio.Level2project.Managers
         {
             DisablePanels();
             PlayerHUD.gameObject.SetActive(true);
-            PlayerHUD.UpdateLives();
         }
 
         public void SetTitleScreen()
@@ -93,9 +92,9 @@ namespace Fabio.Level2project.Managers
         }
         #endregion
 
-        public void OnPlayerHit()
+        public void UpdateLives(int health)
         {
-            PlayerHUD.UpdateLives();
+            PlayerHUD.UpdateLives(health);
         }
     }
 }

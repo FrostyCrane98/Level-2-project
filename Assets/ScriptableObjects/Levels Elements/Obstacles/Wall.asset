@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ef8cd5eaaff0547802f16a20d1fed9, type: 3}
-  m_Name: TimedTile 1 sec
+  m_Script: {fileID: 11500000, guid: f6e21f09333f4da41a89fbe81adc5dd0, type: 3}
+  m_Name: Wall
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 3097746821716718146, guid: c9e33ed6df93953469d3c8b9fc6b1d9b, type: 3}
-  Probability: 2
-  Timer: 1
+  Prefab: {fileID: 1176905378825583992, guid: 888e982f18ba19a478f4094bbe341ea4, type: 3}
+  Probability: 15
+  MinWallHeight: 3
+  MaxWallHeight: 12

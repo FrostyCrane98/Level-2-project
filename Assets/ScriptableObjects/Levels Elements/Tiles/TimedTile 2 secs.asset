@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ef8cd5eaaff0547802f16a20d1fed9, type: 3}
   m_Name: TimedTile 2 secs
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 6979041224257499963, guid: ea8c86b7c097ed3439d73dacea885d36, type: 3}
+  Prefab: {fileID: 8444894336319137341, guid: ea8c86b7c097ed3439d73dacea885d36, type: 3}
   Probability: 5
   Timer: 2

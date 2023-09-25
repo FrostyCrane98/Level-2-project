@@ -103,9 +103,14 @@ public class PCGManager : MonoBehaviour
                 {
                     Wall wall = (Wall)currentObstacle;
                     Transform wallTransform = newObstacle.transform.GetChild(0);
-                    wallTransform.localScale = new Vector3(wallTransform.localScale.x, Random.Range(wall.MinWallHeight, wall.MaxWallHeight),wallTransform.localScale.z);
-                    wallTransform.position = new Vector3(wallTransform.position.x, _tiles[i].transform.position.y + wallTransform.localScale.y / 2 + 0.5f, wallTransform.position.z);
-                }                              
+                    wallTransform.localScale = new Vector2(wallTransform.localScale.x, Random.Range(wall.MinWallHeight, wall.MaxWallHeight));
+                    wallTransform.position = new Vector2(wallTransform.position.x, _tiles[i].transform.position.y + wallTransform.localScale.y / 2 + 0.5f); 
+                }   
+                else if (currentObstacle is JumpingEnemy)
+                {
+                    Transform JumpingEnemyTransform = newObstacle.transform;
+                    JumpingEnemyTransform.position = new Vector2(JumpingEnemyTransform.position.x, JumpingEnemyTransform.position.y + 1+ Random.Range(0,5));
+                }
             }
         }     
     }

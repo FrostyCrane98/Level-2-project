@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e21f09333f4da41a89fbe81adc5dd0, type: 3}
-  m_Name: DefaultWall
+  m_Script: {fileID: 11500000, guid: d6a703de3cec2934bb3e91424e44099b, type: 3}
+  m_Name: JumpingEnemy
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1176905378825583992, guid: 888e982f18ba19a478f4094bbe341ea4, type: 3}
-  Probability: 8
-  MinWallHeight: 3
-  MaxWallHeight: 12
+  Prefab: {fileID: 3589660513215709869, guid: b931c56693eccca40be728e843b9cf1e, type: 3}
+  Probability: 10
+  Damage: 1
+  JumpForce: 12
+  JumpingTimer: 1.5

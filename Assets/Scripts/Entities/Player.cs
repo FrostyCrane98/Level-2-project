@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fabio.Level2project.Managers;
 using Fabio.Level2project.ScriptableObjects;
+using JetBrains.Annotations;
 
 namespace Fabio.Level2project.Entities
 {
     public class Player : MonoBehaviour
     {
         public PlayerGameParams HealthParams;
-        public int CurrentHealth { get {return _currentHealth;}}
+        public int CurrentHealth { get {return _currentHealth;} private set {_currentHealth = value; EventManager.Instance.HealthChanged(value);}}
         
         private int _currentHealth;
         private Vector2 _initialPosition;
 
 
+
         private void OnEnable()
         {
-            _initialPosition = transform.position;
-            _currentHealth = HealthParams.InitialHealth;
             EventManager.Instance.OnStart += ResetPlayer;
             EventManager.Instance.OnPlayerHit += PlayerHit;
             EventManager.Instance.OnStageClear += RespawnPlayer;
@@ -30,18 +30,23 @@ namespace Fabio.Level2project.Entities
             EventManager.Instance.OnPlayerHit -= PlayerHit;
             EventManager.Instance.OnStageClear += RespawnPlayer;
         }
+        private void Start()
+        {
+            _initialPosition = transform.position;
+            CurrentHealth = HealthParams.InitialHealth;
+        }
 
         private void FixedUpdate()
         {
             if (transform.position.y < -10f)
             {
-                EventManager.Instance.PlayerHit();
+                EventManager.Instance.PlayerHit(1);
             }
         }
 
-        private void PlayerHit()
+        private void PlayerHit(int damage)
         {
-            _currentHealth--;
+            CurrentHealth-= damage;
             RespawnPlayer();
 
             if (_currentHealth <= 0) 
@@ -52,7 +57,7 @@ namespace Fabio.Level2project.Entities
 
         private void ResetPlayer()
         {
-            _currentHealth = HealthParams.InitialHealth;
+            CurrentHealth = HealthParams.InitialHealth;
             transform.position = _initialPosition;
         }
 

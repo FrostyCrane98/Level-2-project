@@ -26,6 +26,6 @@ MonoBehaviour:
   MinPlatformY: -1
   MaxPlatformY: 5
   Obstacles:
-  - {fileID: 11400000, guid: c73edade5cc60624d85e1a15f83e6ddc, type: 2}
+  - {fileID: 11400000, guid: e7d3d2cd9fe9fe54baed8e50e060dd6d, type: 2}
   - {fileID: 11400000, guid: 6748cda6d2bcb854e9b95ef1e58293ea, type: 2}
   NoObstaclesProbability: 182

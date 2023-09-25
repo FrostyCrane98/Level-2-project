@@ -27,7 +27,7 @@ namespace Fabio.Level2project.Managers
         }
         #endregion
 
-        public event Action OnPlayerHit;
+        public event Action<int> OnPlayerHit;
         public event Action OnPlayerDeath;
         public event Action OnStageClear;
         public event Action OnPauseToggled;
@@ -37,6 +37,7 @@ namespace Fabio.Level2project.Managers
         public event Action OnGameOver;
         public event Action<PCGElements> OnLevelGeneration;
         public event Action OnGameCompleted;
+        public event Action<int> OnHealthChanged;
 
 
         #region GameLoop Events
@@ -68,6 +69,10 @@ namespace Fabio.Level2project.Managers
 
         #endregion
 
+        public void HealthChanged(int health)
+        {
+            OnHealthChanged?.Invoke(health);
+        }
         public void LevelGeneration(PCGElements levelToGenerate)
         {
             OnLevelGeneration?.Invoke(levelToGenerate);
@@ -85,9 +90,9 @@ namespace Fabio.Level2project.Managers
             OnPlayerDeath?.Invoke();
         }
 
-        public void PlayerHit()
+        public void PlayerHit(int damage)
         {
-            OnPlayerHit?.Invoke();
+            OnPlayerHit?.Invoke(damage);
         }
     }
 }

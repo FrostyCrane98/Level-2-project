@@ -14,11 +14,13 @@ namespace Fabio.Level2project.Managers
         {
             EventManager.Instance.OnStart += GenerateLevel;
             EventManager.Instance.OnStageClear += GenerateLevel;
+            EventManager.Instance.OnTitleScreen += ResetLevelCounter;
         }
         private void OnDisable()
         {
             EventManager.Instance.OnStart -= GenerateLevel;
             EventManager.Instance.OnStageClear -= GenerateLevel;
+            EventManager.Instance.OnTitleScreen -= ResetLevelCounter;
         }
         private void GenerateLevel()
         {
@@ -32,6 +34,11 @@ namespace Fabio.Level2project.Managers
                 EventManager.Instance.LevelGeneration(levelToGenerate);
                 _currentLevel++;
             }
+        }
+
+        private void ResetLevelCounter()
+        {
+            _currentLevel = 1;
         }
     }
 }

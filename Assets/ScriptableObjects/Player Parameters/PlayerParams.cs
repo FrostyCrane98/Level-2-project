@@ -6,17 +6,17 @@ using UnityEngine;
 public class PlayerParams : ScriptableObject
 {
     [Header("The base movement speed of the player")]
-    [Range(1f, 50f)]
+    [Range(1, 50)]
     public int BaseSpeed = 1;
-    [Range(1f, 50f)]
+    [Range(1, 50)]
     public int MaxSpeed = 1;
 
     [Header("Jump parameters")]
     
-    [Range(1f, 1000f)]
+    [Range(1, 100)]
     public int JumpForce = 1;
 
-    [Range(1f, 1000f)]
+    [Range(1, 100)]
     public int DoubleJumpForce = 1;
 
     [Header("Walljump parameters")]

@@ -7,15 +7,14 @@ namespace Fabio.Level2project.Entities
 {
     public class PlayerHUD : MonoBehaviour
     {
-        public Player Player;
         public List<GameObject> LifeIcons = new List<GameObject>();
         
         
-        public void UpdateLives()
+        public void UpdateLives(int health)
         {
             for (int i = LifeIcons.Count - 1; i >= 0; i--)
             {
-                LifeIcons[i].SetActive(Player.CurrentHealth > i);
+                LifeIcons[i].SetActive(health > i);
             }
         }
     }
