@@ -13,11 +13,13 @@ namespace Fabio.Level2project.Entities
         private CircleCollider2D _collider;
         private float _timeRemaining;
         private bool _isGrounded = true;
+        private Vector2 _initialPosition;
 
         private void Start()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
             _collider = GetComponent<CircleCollider2D>();
+            _initialPosition = transform.position;
         }
         private void FixedUpdate()
         {        
@@ -33,6 +35,12 @@ namespace Fabio.Level2project.Entities
                 {
                     _timeRemaining -= Time.fixedDeltaTime;
                 }
+            }
+
+            if (transform.position.y <= -12f)
+            {
+                _rigidBody.velocity = Vector2.zero;
+                transform.position = _initialPosition;
             }
         }
 

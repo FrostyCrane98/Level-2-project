@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bc2ec5d02debc4f891858ecb4a91d1, type: 3}
+  m_Name: Biome 3
+  m_EditorClassIdentifier: 
+  TileTypes:
+  - {fileID: 11400000, guid: 5558a846e46163d48af9773cd96f103e, type: 2}
+  InitialTiles: 5
+  StartPosition: {x: 0, y: 0}
+  LevelLenght: 20
+  MinPlatformSize: 2
+  MaxPlatformSize: 5
+  MinPlatformGap: 3
+  MaxPlatformGap: 8
+  MinPlatformY: -1
+  MaxPlatformY: 5
+  Obstacles:
+  - {fileID: 11400000, guid: 37dfe7abe6402224cbe454e1acd98b7c, type: 2}
+  - {fileID: 11400000, guid: 8ec52b885f329324482f2a7121adcbe4, type: 2}
+  NoObstaclesProbability: 133

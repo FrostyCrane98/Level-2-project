@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 454066078060076161}
   - component: {fileID: -5298143223339688322}
   m_Layer: 6
-  m_Name: Spyke
+  m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

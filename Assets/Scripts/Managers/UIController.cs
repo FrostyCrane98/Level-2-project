@@ -1,8 +1,6 @@
-using Fabio.Level2project.Managers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Fabio.Level2project.Entities;
+using TMPro;
 
 namespace Fabio.Level2project.Managers
 {
@@ -12,7 +10,9 @@ namespace Fabio.Level2project.Managers
         public GameObject PausePanel;
         public GameObject WinPanel;
         public GameObject GameOverPanel;
+        public GameObject InstructionsPanel;
         public PlayerHUD PlayerHUD;
+        public TextMeshProUGUI finalTimeText;
 
 
         private void OnEnable()
@@ -44,6 +44,7 @@ namespace Fabio.Level2project.Managers
             PausePanel.SetActive(false);
             WinPanel.SetActive(false);
             GameOverPanel.SetActive(false);
+            InstructionsPanel.SetActive(false);
         }
 
         public void EnableTitlePanel()
@@ -62,6 +63,8 @@ namespace Fabio.Level2project.Managers
         {
             DisablePanels();
             WinPanel.SetActive(true);
+            SetFinalTime();
+            PlayerHUD.gameObject.SetActive(false);
         }
 
         public void EnableGameOverPanel()
@@ -69,25 +72,36 @@ namespace Fabio.Level2project.Managers
             DisablePanels();
             GameOverPanel.SetActive(true);
         }
+
+        public void EnableInstructionsPanel()
+        {
+            DisablePanels();
+            InstructionsPanel.SetActive(true);
+        }
         #endregion
 
         #region GameLoop Events
         public void StartGame()
         {
             DisablePanels();
-            PlayerHUD.gameObject.SetActive(true);
+            PlayerHUD.gameObject.SetActive(true);           
         }
 
         public void SetTitleScreen()
         {
-            DisablePanels();
+            PlayerHUD.ResetChronometer();
             PlayerHUD.gameObject.SetActive(false);
             EnableTitlePanel();
         }
 
+        public void SetInstructionsScreen()
+        {
+            EventManager.Instance.InstructionsScreen();
+            EnableInstructionsPanel();
+        }
+
         public void SetPause()
         {
-            DisablePanels();
             EnablePausePanel();
         }
         #endregion
@@ -95,6 +109,11 @@ namespace Fabio.Level2project.Managers
         public void UpdateLives(int health)
         {
             PlayerHUD.UpdateLives(health);
+        }
+
+        private void SetFinalTime()
+        {
+            finalTimeText.text = PlayerHUD.ChronometerText.text;
         }
     }
 }

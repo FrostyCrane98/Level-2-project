@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Fabio.Level2project.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "new TileType", menuName = "ScriptableObjects/Tiles/Create New TileType")]
+    [CreateAssetMenu(fileName = "new Default Tile", menuName = "ScriptableObjects/Tiles/Create New Default Tyle")]
     public class TileType : ScriptableObject
     {    
         public GameObject Prefab;

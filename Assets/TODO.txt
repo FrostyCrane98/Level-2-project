@@ -1,4 +1,0 @@
-- Add invicibility time after damage
-- Jumping Enemy
-- Fire bar
-- Falling obstacle

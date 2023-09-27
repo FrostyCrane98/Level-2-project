@@ -32,6 +32,7 @@ namespace Fabio.Level2project.Managers
         public event Action OnStageClear;
         public event Action OnPauseToggled;
         public event Action OnStart;
+        public event Action OnInstructionsScreen;
         public event Action OnTitleScreen;
         public event Action OnResume;
         public event Action OnGameOver;
@@ -44,6 +45,11 @@ namespace Fabio.Level2project.Managers
         public void StartGame()
         {
             OnStart?.Invoke();
+        }
+
+        public void InstructionsScreen()
+        {
+        OnInstructionsScreen?.Invoke();
         }
 
         public void TitleScreen()

@@ -15,6 +15,7 @@ namespace Fabio.Level2project.Managers
         private enum eGameState
         {
             TitleScreen,
+            InstructionsScreen,
             Start,
             Idle,
             Resume,
@@ -30,6 +31,7 @@ namespace Fabio.Level2project.Managers
             EventManager.Instance.OnPlayerDeath += OnPlayerDeath;
             EventManager.Instance.OnGameCompleted += OnGameWin;
             EventManager.Instance.OnPauseToggled += TogglePause;
+            EventManager.Instance.OnInstructionsScreen += ToggleInstructions;
         }
 
         private void OnDisable()
@@ -37,6 +39,7 @@ namespace Fabio.Level2project.Managers
             EventManager.Instance.OnPlayerDeath -= OnPlayerDeath;
             EventManager.Instance.OnGameCompleted -= OnGameWin;
             EventManager.Instance.OnPauseToggled -= TogglePause;
+            EventManager.Instance.OnInstructionsScreen -= ToggleInstructions;
         }
 
         private void Start()
@@ -49,6 +52,10 @@ namespace Fabio.Level2project.Managers
             {
                 case eGameState.TitleScreen:
                     EventManager.Instance.TitleScreen();                    
+                    Time.timeScale = 0;
+                    break;
+
+                case eGameState.InstructionsScreen:;
                     Time.timeScale = 0;
                     break;
 
@@ -71,7 +78,6 @@ namespace Fabio.Level2project.Managers
 
                 case eGameState.Win:
                     Time.timeScale = 0;
-                    //UIController.EnableWinPanel();
                     break;
 
                 case eGameState.GameOver:
@@ -101,6 +107,17 @@ namespace Fabio.Level2project.Managers
             State = eGameState.Resume;
         }
 
+        private void ToggleInstructions()
+        {
+            if (State == eGameState.TitleScreen)
+            {
+                State = eGameState.InstructionsScreen;
+            }
+            else if (State == eGameState.InstructionsScreen)
+            {
+                State = eGameState.TitleScreen;
+            }
+        }
         private void TogglePause()
         {
             if (State == eGameState.Idle)
@@ -121,7 +138,7 @@ namespace Fabio.Level2project.Managers
         private void SetIdleState()
         {
             State = eGameState.Idle;
-        }
+        }        
 
         private void OnPlayerDeath()
         {

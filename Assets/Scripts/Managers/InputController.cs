@@ -151,12 +151,12 @@ namespace Fabio.Level2project.Managers
         }
 
         #region WallJump
-        private bool WallJumpCheck(Vector2 _direction)
+        private bool WallJumpCheck(Vector2 direction)
         {
-            RaycastHit2D check = Physics2D.Raycast(_rigidBody.position + _direction * (_collider.size.x / 2 + 0.01f), _direction, 0.01f);
+            RaycastHit2D check = Physics2D.Raycast(_rigidBody.position + direction * (_collider.size.x / 2 + 0.01f), direction, 0.01f);
             if (check.transform != null && check.transform.gameObject.layer == LayerMask.NameToLayer("World"))
             {
-                _wallDirection = _direction;
+                _wallDirection = direction;
                 _canWallJump = true;
                 return true;
             }

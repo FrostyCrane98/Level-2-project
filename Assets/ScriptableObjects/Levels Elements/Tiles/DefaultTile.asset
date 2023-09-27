@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f8df80575f899d45b62f1dc7537e218, type: 3}
-  m_Name: Grass
+  m_Name: DefaultTile
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7245650222503378342, guid: c73b6f50c9e5117439975d9f79bada80, type: 3}
   Probability: 1
